@@ -25,7 +25,7 @@ const Cart = () => {
     <Modal
       className="cart"
       open={userctx.progress === "cart"}
-      onClose={hideCart}
+      onClose={userctx.progress === 'cart' ? hideCart : null}
     >
       <h2>Your Cart</h2>
       <ul>
