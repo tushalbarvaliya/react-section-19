@@ -1,17 +1,19 @@
-import { useContext } from "react";
-import Button from "../UI/Button";
-import { currencyFormatter } from "../util/formatting";
-import CartContext from "../store/CartContext";
+import { useContext } from 'react';
 
-const MealItem = ({ meal }) => {
-  const { addItem } = useContext(CartContext);
-  function addItemToCart() {
-    addItem(meal);
+import { currencyFormatter } from '../util/formatting.js';
+import Button from './UI/Button.jsx';
+import CartContext from '../store/CartContext.jsx';
+
+export default function MealItem({ meal }) {
+  const cartCtx = useContext(CartContext);
+
+  function handleAddMealToCart() {
+    cartCtx.addItem(meal);
   }
+
   return (
     <li className="meal-item">
       <article>
-        {/* http://localhost:3000/images/mac-and-cheese.jpg */}
         <img src={`http://localhost:3000/${meal.image}`} alt={meal.name} />
         <div>
           <h3>{meal.name}</h3>
@@ -21,11 +23,9 @@ const MealItem = ({ meal }) => {
           <p className="meal-item-description">{meal.description}</p>
         </div>
         <p className="meal-item-actions">
-          <Button onClick={addItemToCart}>Add to Cart</Button>
+          <Button onClick={handleAddMealToCart}>Add to Cart</Button>
         </p>
       </article>
     </li>
   );
-};
-
-export default MealItem;
+}

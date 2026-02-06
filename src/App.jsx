@@ -1,18 +1,19 @@
-import Header from "./components/Header";
-import Meals from "./components/Meals";
-import { CartProvider } from "./store/CartContext";
-import Cart from "./components/Cart";
-import {UserProgressContextProvider}  from "./store/UserProgressContext";
-import Checkout from "./components/Checkout";
+import Cart from './components/Cart.jsx';
+import Checkout from './components/Checkout.jsx';
+import Header from './components/Header.jsx';
+import Meals from './components/Meals.jsx';
+import { CartContextProvider } from './store/CartContext.jsx';
+import { UserProgressContextProvider } from './store/UserProgressContext.jsx';
+
 function App() {
   return (
     <UserProgressContextProvider>
-      <CartProvider>
-        <Header></Header>
+      <CartContextProvider>
+        <Header />
         <Meals />
         <Cart />
-        <Checkout/>
-      </CartProvider>
+        <Checkout />
+      </CartContextProvider>
     </UserProgressContextProvider>
   );
 }
